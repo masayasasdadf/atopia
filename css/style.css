@@ -132,6 +132,17 @@ ul, ol { list-style: none; }
 
 /* ---------- hero ---------- */
 .hero { background: linear-gradient(160deg, #F3F7F3 0%, #FCFCFA 55%, #F6F3EC 100%); overflow: hidden; }
+.hero.has-photo {
+  background-image:
+    linear-gradient(90deg,
+      rgba(252, 252, 250, .97) 0%,
+      rgba(252, 252, 250, .93) 38%,
+      rgba(252, 252, 250, .55) 62%,
+      rgba(252, 252, 250, .12) 100%),
+    url("../assets/img/mv-mother-child.webp");
+  background-size: cover;
+  background-position: right center;
+}
 .hero-inner {
   max-width: 1080px;
   margin: 0 auto;
@@ -162,15 +173,20 @@ ul, ol { list-style: none; }
 
 .hero-vertical {
   writing-mode: vertical-rl;
-  font-family: var(--font-display);
+  /* Webフォント(しっぽり明朝)は縦書きメトリクスを持たず文字が重なるため、縦書きのみシステム明朝を使用 */
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif CJK JP", "Noto Serif JP", serif;
   font-size: 1.05rem;
   letter-spacing: .5em;
-  color: var(--c-accent);
-  border-left: 1px solid var(--c-border);
-  padding-left: 28px;
+  color: var(--c-accent-deep);
   display: flex;
   align-items: flex-start;
+  background: rgba(252, 252, 250, .72);
+  backdrop-filter: blur(3px);
+  border-radius: 999px;
+  padding: 28px 14px;
+  align-self: flex-start;
 }
+.hero-vertical p { white-space: nowrap; }
 
 .hero-band { background: var(--c-accent); color: #fff; }
 .hero-band p { max-width: 1080px; margin: 0 auto; padding: 14px 24px; font-size: .95rem; text-align: center; }
@@ -395,6 +411,14 @@ ul, ol { list-style: none; }
   border-radius: var(--radius);
   padding: 36px 32px;
 }
+.doctor-photo { margin-bottom: 24px; }
+.doctor-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  box-shadow: 0 6px 18px rgba(36, 49, 43, .14);
+}
 .doctor-profile h3 {
   font-family: var(--font-display);
   font-size: 1.15rem;
@@ -429,33 +453,17 @@ ul, ol { list-style: none; }
   padding: 40px;
   align-items: center;
 }
-.book-cover {
-  aspect-ratio: 128 / 182;
-  border-radius: 4px 10px 10px 4px;
-  padding: 24px 18px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-shadow: 6px 8px 20px rgba(36, 49, 43, .22), inset 6px 0 8px -6px rgba(0, 0, 0, .35);
-  position: relative;
+.book-cover { text-align: center; }
+.book-cover img {
+  display: inline-block;
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  border-radius: 4px;
+  border: 1px solid var(--c-border);
+  background: #fff;
+  box-shadow: 6px 8px 20px rgba(36, 49, 43, .18);
 }
-.book-cover::before {
-  content: "";
-  position: absolute;
-  inset: 0 auto 0 8px;
-  width: 1px;
-  background: rgba(255, 255, 255, .35);
-}
-.book-cover--a { background: linear-gradient(150deg, #1E6154, #14493F); color: #fff; }
-.book-cover--b { background: linear-gradient(150deg, #F4EFE4, #E7DEC9); color: #3C3527; }
-.book-cover-title {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 1.02rem;
-  line-height: 1.7;
-  letter-spacing: .04em;
-}
-.book-cover-author { font-size: .78rem; letter-spacing: .18em; opacity: .85; }
 .book-info h3 {
   font-family: var(--font-display);
   font-size: 1.25rem;
@@ -552,8 +560,13 @@ ul, ol { list-style: none; }
    ========================================================== */
 @media (max-width: 960px) {
   .global-nav { display: none; }
-  .header-cta { margin-left: auto; }
+  .header-inner { gap: 10px; padding: 0 16px; }
+  .header-cta { margin-left: auto; gap: 8px; }
   .header-tel { display: none; }
+  .brand-name { font-size: 1.02rem; white-space: nowrap; }
+  .brand-sub { display: none; }
+  .btn-reserve { white-space: nowrap; }
+  .btn-reserve .btn-note { display: none; }
 
   .nav-toggle {
     display: flex;
@@ -579,6 +592,15 @@ ul, ol { list-style: none; }
   .mobile-nav a { display: block; padding: 12px 4px; color: var(--c-ink); text-decoration: none; font-weight: 500; border-bottom: 1px dashed var(--c-border); }
 
   .hero-inner { padding: 56px 24px 48px; gap: 28px; }
+  .hero.has-photo {
+    background-image:
+      linear-gradient(180deg,
+        rgba(252, 252, 250, .96) 0%,
+        rgba(252, 252, 250, .88) 55%,
+        rgba(252, 252, 250, .45) 100%),
+      url("../assets/img/mv-mother-child.webp");
+    background-position: center bottom;
+  }
   .hero-vertical { display: none; }
   .pc-only { display: none; }
   .sp-only { display: inline; }
